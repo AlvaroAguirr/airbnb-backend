@@ -36,25 +36,25 @@ SIMPLE_JWT={
 
 
 }
-ACCOUNT_USER=MODEL_USERnAM_FIELD= None
+ACCOUNT_USER_MODEL_USERNAME_FIELD= None
 ACCOUNT_EMAIL_REQUIRED= True
-ACCOUNT_USERNAME_REQUIRED=False,
+ACCOUNT_USERNAME_REQUIRED=False
 ACCOUNT_AUTHENTICATION_METHOD='email'
 ACCOUNT_EMAIL_VERIFICATION=None
 
 REST_FRAMEWORK={
     'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework_simplejwtt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
 
     ),
-    'DEFAUÑT_PERMISSION_CLASSES':(
+    'DEFAULT_PERMISSION_CLASSES':(
         'rest_framework.permissions.IsAuthenticated',
     )
 
 }
 CORS_ALLOWED_ORIGINS =[
     'http://127.0.0.1:8000',
-    'htpp://127.0.0.1:3000',
+    'http://127.0.0.1:3000',
 ]
 
 REST_AUTH = {
@@ -170,6 +170,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL='media/' 
+MEDIA_ROOT= BASE_DIR /'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
