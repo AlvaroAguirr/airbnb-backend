@@ -16,7 +16,7 @@ class Property(models.Model):
     bathrooms= models.IntegerField()
     guest= models.IntegerField()
     country= models.CharField(max_length=255)
-    counytry_code=models.CharField(max_length=10)
+    country_code=models.CharField(max_length=10)
     category= models.CharField(max_length=255)
 
     #favorited
