@@ -1,5 +1,7 @@
 from .serializer import UserDetailSerializer
 
+from property.serializers import ReservartionListSerializer
+
 from django.http import JsonResponse
 from .models import User
 
@@ -16,3 +18,13 @@ def landlord_detail(request,pk):
 
     return JsonResponse (serializer.data, safe=False)
 
+
+
+@api_view(['GET'])
+def reservation_list(request):
+    reservations = request.user.reservations.all()
+
+    print('user del back',request.user)
+    print(reservations)
+    serializer= ReservartionListSerializer(reservations, many=True)
+    return JsonResponse(serializer.data, safe=False)
