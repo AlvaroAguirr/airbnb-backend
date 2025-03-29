@@ -37,11 +37,14 @@ def properties_list(request):
 
    country = request.GET.get('country','')
    category = request.GET.get('category','')
-   checkin_date = request.GET.get('checkin_date','')
-   checkout_date = request.GET.get('checkout_date','')
+   checkin_date = request.GET.get('checkin','')
+   checkout_date = request.GET.get('checkout','')
    bedrooms = request.GET.get('bedrooms','')
    guests = request.GET.get('guests','')
    bathrooms = request.GET.get('bathrooms','')
+
+
+   print('country', country)
 
    if checkin_date and checkout_date:
       exact_matches = Reservation.objects.filter(start_date=checkin_date)| Reservation.objects.filter(end_date=checkout_date)
@@ -65,13 +68,13 @@ def properties_list(request):
       properties = properties.filter(guests__gte=guests)  
 
    if bedrooms:
-      properties = properties.filter(bedrooms__gte=guests) 
+      properties = properties.filter(bedrooms__gte=bedrooms) 
 
    if bathrooms:
-      properties = properties.filter(bathrooms__gte=guests)  
+      properties = properties.filter(bathrooms__gte=bathrooms)  
       
    if country:
-      properties = properties.filter(country__gte=guests)  
+      properties = properties.filter(country__gte=country)  
       
    if category and category != 'undefined':
       properties = properties.filter(category=category)  
